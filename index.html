@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <header>
+        <h1>Event Management</h1>
+        <nav>
+            <a href="#current-events">Current Events</a>
+            <a href="#upcoming-events">Upcoming Events</a>
+            <a href="#past-events">Past Events</a> 
+        </nav>
+    </header>
+
+    <main>
+        <!-- Aktualni događaji -->
+        <section id="current-events" class="event-section">
+            <h2>Current Events</h2>
+            <div class="event-list" id="current-event-list">
+                <div class="event-card" data-event-id="1">
+                    <img src="/slike/priscilla-du-preez-Q7wGvnbuwj0-unsplash.jpg" alt="Event Image">
+                    <h3>Event 1</h3>
+                    <p>Date: October 10, 2024</p>
+                    <p>Location: New York</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id.</p>
+                </div>
+
+                <div class="event-card" data-event-id="2">
+                    <img src="/slike/austin-distel-rxpThOwuVgE-unsplash.jpg" alt="Event Image">
+                    <h3>Event 2</h3>
+                    <p>Date: November 5, 2024</p>
+                    <p>Location: Los Angeles</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id.</p>
+                </div>
+                <div class="event-card" data-event-id="3">
+                    <img src="/slike/austin-distel-rxpThOwuVgE-unsplash.jpg" alt="Event Image">
+                    <h3>Event 3</h3>
+                    <p>Date: November 5, 2024</p>
+                    <p>Location: Los Angeles</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id.</p>
+                </div>
+            </div>
+
+            <button id="load-more-current">Prikaži više</button>
+
+            <button id="show-less-current" style="display: none; float: right;">Prikaži manje</button>
+        </section>
+
+        <!-- Budući događaji -->
+        <section id="upcoming-events" class="event-section">
+            <h2>Upcoming Events</h2>
+            <div class="event-list">
+            <div class="event-card">
+                <img src="/slike/brooke-cagle--uHVRvDr7pg-unsplash.jpg" alt="Event Image">
+                <h3>Event 1</h3>
+                <p>Date: October 10, 2024</p>
+                <p>Location: New York</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id.</p>
+            </div>
+            <div class="event-card">
+                <img src="/slike/the-jopwell-collection-4WTb4tR45JQ-unsplash.jpg" alt="Event Image">
+                <h3>Event 2</h3>
+                <p>Date: November 5, 2024</p>
+                <p>Location: Los Angeles</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id.</p>
+            </div>
+            <div class="event-card">
+                <img src="/slike/the-jopwell-collection-4WTb4tR45JQ-unsplash.jpg" alt="Event Image">
+                <h3>Event 3</h3>
+                <p>Date: November 5, 2024</p>
+                <p>Location: Los Angeles</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id.</p>
+            </div>
+            </div>
+
+            <button id="load-more-upcoming">Prikaži više</button>
+
+            <button id="show-less-upcoming" style="display: none; float: right;">Prikaži manje</button>
+
+    </section>
+        <!-- Prošli događaji -->
+        <section id="past-events" class="event-section">
+            <h2>Past Events</h2>
+            <div class="event-list">
+            <div class="event-card">
+                <img src="/slike/brooke-cagle--uHVRvDr7pg-unsplash.jpg" alt="Event Image">
+                <h3>Event 1</h3>
+                <p>Date: October 10, 2024</p>
+                <p>Location: New York</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id.</p>
+            </div>
+            <div class="event-card">
+                <img src="/slike/the-jopwell-collection-4WTb4tR45JQ-unsplash.jpg" alt="Event Image">
+                <h3>Event 2</h3>
+                <p>Date: November 5, 2024</p>
+                <p>Location: Los Angeles</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id.</p>
+            </div>
+            <div class="event-card">
+                <img src="/slike/the-jopwell-collection-4WTb4tR45JQ-unsplash.jpg" alt="Event Image">
+                <h3>Event 3</h3>
+                <p>Date: November 5, 2024</p>
+                <p>Location: Los Angeles</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id.</p>
+            </div>
+
+        </div>
+        </section>
+    </main>
+
+    <section class="bottom-section">
+        <div class="content-container">
+            <div class="text-container">
+                <h2>About the Event</h2>
+                <p>This event is designed to bring together like-minded individuals for networking, learning, and fun! Come join us for an unforgettable experience.</p>
+            </div>
+            <div class="image-container">
+                <img src="/slike/austin-distel-rxpThOwuVgE-unsplash.jpg" alt="Event Image">
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

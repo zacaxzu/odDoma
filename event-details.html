@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    <link rel="stylesheet" href="css/event-details.css">
+</head>
+<body>
+    <div class="event-details-container">
+        <button class="back-button" id="back-button">Go Back</button>
+
+        <div class="event-content">
+            <h1 id="event-title">Event Title</h1>
+            <p id="event-description">Event description goes here.</p>
+            <p id="event-date">Event Date: January 15, 2025</p>
+            <p id="event-location">Location: Miami</p>
+        </div>
+
+        <div class="circle" id="organizer-circle">
+            <p><strong>Organizer:</strong> John Doe</p>
+        </div>
+
+        <div class="circle" id="contact-circle">
+            <p><strong>Contact:</strong> +123 456 7890</p>
+        </div>
+
+        <div class="circle" id="attendees-circle">
+            <p><strong>Attendees:</strong> 25 people</p>
+        </div>
+
+        <div id="attendees-popup" class="popup">
+            <div class="popup-content">
+                <span class="close-popup" id="close-popup">&times;</span>
+                <h2>Attendees</h2>
+                <ul id="attendees-list">
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+     
+    <script src="js/event-details.js"></script>
+</body>
+</html>
