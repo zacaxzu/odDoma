@@ -1,4 +1,45 @@
-/* General Styles */
+// Colors
+$primary-bg: #2c3e50;
+$secondary-bg: #ecf0f1;
+$accent-gradient: linear-gradient(90deg, #6a11cb, #2575fc);
+$hover-gradient: linear-gradient(90deg, #00c6ff, #0072ff);
+$light-text: #ecf0f1;
+$gray: #bdc3c7;
+$dark-gray: #34495e;
+$success: #27ae60;
+$warning: #f1c40f;
+$error: #e74c3c;
+
+// Spacing
+$base-padding: 15px;
+$border-radius: 8px;
+
+// Shadows
+$box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+$hover-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+
+@mixin button-style($bg-gradient, $color: $light-text) {
+    padding: 10px 15px;
+    background: $bg-gradient;
+    color: $color;
+    border: none;
+    border-radius: $border-radius;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: $box-shadow;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: $hover-shadow;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -17,7 +58,6 @@ p {
     margin: 0;
 }
 
-/* Utility Classes */
 .centered {
     display: flex;
     flex-direction: column;
@@ -25,119 +65,65 @@ p {
     text-align: center;
 }
 
-/* Navbar */
 .navbar {
-    background: #2c3e50;
-    color: #ecf0f1;
-    padding: 15px 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background: $primary-bg;
+    color: $light-text;
+    padding: $base-padding;
+    box-shadow: $box-shadow;
+
+    .navbar-container {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+
+        .nav-link {
+            color: $gray;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s ease;
+
+            &:hover,
+            &.active {
+                color: $light-text;
+            }
+        }
+    }
 }
 
-.navbar-container {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-}
-
-.nav-link {
-    color: #bdc3c7;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 14px;
-    transition: color 0.3s ease;
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: #ecf0f1;
-}
-
-/* Sidebar */
-/* Sidebar */
 .sidebar {
-    background: #ecf0f1;
+    background: $secondary-bg;
     width: 300px;
     box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: $base-padding;
     position: fixed;
     left: 0;
     top: 60px;
     height: calc(100% - 60px);
-    transition: transform 0.4s ease;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    transition: transform 0.4s ease;
+
+    &.hidden {
+        transform: translateX(-320px);
+    }
+
+    .add-event-button {
+        @include button-style($hover-gradient);
+        align-self: center;
+    }
 }
 
-.sidebar.hidden {
-    transform: translateX(-320px);
-}
-
-.add-event-button {
-    padding: 12px 20px;
-    background: linear-gradient(90deg, #00c6ff, #0072ff);
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
-    align-self: center;
-    /* Postavlja dugme na dno sidebar-a */
-}
-
-.add-event-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Show Filters Button */
 .toggle-button {
     position: fixed;
     left: 10px;
     top: 70px;
     z-index: 10;
-    padding: 8px 16px;
-    background: #bdc3c7;
-    color: #2c3e50;
-    border: none;
+    @include button-style($gray, $primary-bg);
     border-radius: 30px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.toggle-button:hover {
-    background: #95a5a6;
-    transform: scale(1.05);
-}
-
-.toggle-button:focus {
-    outline: none;
-}
-
-/* Main Content */
-.content-layout {
-    display: flex;
-    margin-left: 300px;
-    transition: margin-left 0.4s ease;
-}
-
-.sidebar.hidden+.content-layout {
-    margin-left: 0;
-}
-
-.main-container {
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Search Bar */
-/* Search Bar Section */
 .search-bar {
     display: flex;
     flex-direction: column;
@@ -145,249 +131,34 @@ p {
     gap: 15px;
     margin: 30px auto;
     max-width: 600px;
+
+    .search-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+
+        .search-input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 2px solid lighten($gray, 20%);
+            border-radius: $border-radius;
+            font-size: 16px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+
+            &:focus {
+                border-color: lighten($accent-gradient, 20%);
+                box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+            }
+        }
+
+        .search-button {
+            @include button-style($accent-gradient);
+        }
+    }
 }
 
-.search-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    /* Razmak između input-a i dugmeta */
-    width: 100%;
-}
-
-.search-input {
-    flex: 1;
-    padding: 10px 15px;
-    border: 2px solid #d1d8e0;
-    border-radius: 8px;
-    font-size: 16px;
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: border 0.3s ease, box-shadow 0.3s ease;
-}
-
-.search-input:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
-    outline: none;
-}
-
-.search-button {
-    padding: 12px 20px;
-    background: linear-gradient(90deg, #6a11cb, #2575fc);
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-.search-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-}
-
-.add-event-button {
-    padding: 8px 16px;
-    background: linear-gradient(90deg, #00c6ff, #0072ff);
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
-    align-self: flex-end;
-    /* Pomera dugme desno, ako je potrebno */
-}
-
-.add-event-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-}
-/* Table Styles */
-.table-container {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-}
-
-/* Event Table Section */
-.event-table table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-.event-table th,
-.event-table td {
-    padding: 15px;
-    font-size: 16px;
-    text-align: center;
-}
-
-.event-table th {
-    background: linear-gradient(90deg, #6a11cb, #2575fc);
-    color: white;
-    text-transform: uppercase;
-}
-
-.event-table tbody td {
-    border-bottom: 1px solid #ddd;
-}
-
-.event-table tbody tr:hover {
-    background: #e3f2fd;
-}
-
-/* Status Styling */
-.status {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.status.active {
-    background: #27ae60;
-    color: #fff;
-}
-
-.status.upcoming {
-    background: #f1c40f;
-    color: #fff;
-}
-
-.status.past {
-    background: #e74c3c;
-    color: #fff;
-}
-
-/* Stilizacija za akcije */
-.action-cell {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    /* Razmak između dugmadi */
-    align-items: center;
-}
-
-.action-button {
-    padding: 8px 12px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-.action-button.edit {
-    background: linear-gradient(90deg, #3498db, #2ecc71);
-    color: white;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-}
-
-.action-button.edit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-}
-
-.action-button.delete {
-    background: linear-gradient(90deg, #e74c3c, #c0392b);
-    color: white;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-}
-
-.action-button.delete:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* Sidebar Styling - Tekst u sidebaru */
-.sidebar h2 {
-    margin-top: 40px;
-    /* Razmak od vrha */
-    font-size: 18px;
-    color: #2c3e50;
-    font-weight: 600;
-}
-
-.filter-group {
-    margin-bottom: 10px;
-    /* Dodaje prostor ispod */
-}
-
-.filter-group label {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 14px;
-    color: #34495e;
-}
-
-.sort-dropdown {
-    width: calc(100% - 120px);
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #bdc3c7;
-    border-radius: 4px;
-    /* Razmak između naslova i dropdown-a */
-}
-
-/* Sort Section */
-.sort-section {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    /* Razmak između dropdown-a i gumba */
-}
-
-.sort-toggle-button {
-    padding: 8px 16px;
-    background: #2c3e50;
-    color: #ecf0f1;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background 0.3s ease;
-}
-
-.sort-toggle-button:hover {
-    background: #34495e;
-}
-
-.sort-toggle-button:focus {
-    outline: none;
-}
-
-/* Apply Filter Button */
-.apply-filter-button {
-    padding: 10px 15px;
-    background: linear-gradient(90deg, #00c6ff, #0072ff);
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
-    margin-top: 15px;
-    width: 100%;
-    /* Dugme rasteže na širinu sidebar-a */
-}
-
-.apply-filter-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-}
-/* Event Table Section */
 .event-table {
     margin: 30px auto;
     width: 90%;
@@ -396,95 +167,64 @@ p {
     border-collapse: collapse;
     overflow: hidden;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: $box-shadow;
     background-color: #ffffff;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+
+        th,
+        td {
+            padding: 15px;
+            font-size: 16px;
+        }
+
+        th {
+            background: $accent-gradient;
+            color: $light-text;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        tbody {
+            tr {
+                transition: background 0.3s ease, transform 0.2s ease;
+
+                &:nth-child(even) {
+                    background-color: #f8f9fa;
+                }
+
+                &:hover {
+                    background: #e3f2fd;
+                    transform: scale(1.01);
+                }
+            }
+
+            td {
+                border-bottom: 1px solid #ddd;
+            }
+
+            .status {
+                @include button-style($success);
+                text-transform: uppercase;
+
+                &.upcoming {
+                    background: $warning;
+                }
+
+                &.past {
+                    background: $error;
+                }
+            }
+        }
+    }
 }
 
-/* Stilizacija za tabelu */
-.event-table table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.event-table th,
-.event-table td {
-    padding: 15px;
-    font-size: 16px;
-}
-
-.event-table th {
-    background: linear-gradient(90deg, #6a11cb, #2575fc);
-    color: white;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.event-table tbody tr {
-    transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.event-table tbody tr:nth-child(even) {
-    background-color: #f8f9fa;
-}
-
-.event-table tbody tr:hover {
-    background: #e3f2fd;
-    transform: scale(1.01);
-}
-
-.event-table tbody td {
-    border-bottom: 1px solid #ddd;
-}
-
-/* Dugmad u tabeli */
-.event-table tbody td button {
-    padding: 8px 12px;
-    background: linear-gradient(90deg, #00c6ff, #0072ff);
-    border: none;
-    color: white;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-.event-table tbody td button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* Pagination */
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.pagination-button {
-    padding: 10px 15px;
-    background-color: #6a11cb;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
-}
-
-.pagination-button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-}
-
-.pagination-button:hover:not(:disabled) {
-    background-color: #2575fc;
-}
-
-.pagination-info {
-    font-size: 16px;
-    font-weight: bold;
-}
+@import 'variables';
+@import 'mixins';
+@import 'global';
+@import 'navbar';
+@import 'sidebar';
+@import 'search';
+@import 'table';
