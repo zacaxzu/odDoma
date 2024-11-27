@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elegant Event Management</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="#" class="nav-link active">Events</a>
+      <a href="#" class="nav-link">Attendees</a>
+      <a href="#" class="nav-link">Venues</a>
+      <a href="#" class="nav-link">Organizers</a>
+    </div>
+  </nav>
+
+  <!-- Toggle Button -->
+  <button class="toggle-button" id="toggleButton">Show Options</button>
+
+  <!-- Sidebar -->
+  <aside class="sidebar hidden" id="sidebar">
+    <h2>Filter Events</h2>
+    <div class="filter-group">
+        <label>
+        <input type="checkbox" checked> Active
+        </label>
+        <label>
+        <input type="checkbox"> Past
+        </label>
+        <label>
+        <input type="checkbox"> Upcoming
+        </label>
+    </div>
+    <h3>Sort by</h3>
+    <div class="sort-section">
+        <select class="sort-dropdown">
+        <option>-</option>
+        <option value="name">Name</option>
+        <option value="date">Date</option>
+        <option value="location">Location</option>
+        </select>
+        <button class="sort-toggle-button" id="sortToggle">Ascending</button>
+    </div>
+    <button class="apply-filter-button">Filter</button>
+    <button class="add-event-button">+ Add Event</button>
+    </aside>
+
+  <!-- Main Content -->
+  <div class="content-layout">
+    <main class="main-container">
+      <!-- Header Section -->
+      <header class="header-section centered">
+        <h1>Manage Your Events</h1>
+        <p>Organize, filter, and manage all your events in one place.</p>
+      </header>
+
+      <!-- Search Bar -->
+      <section class="search-bar centered">
+        <div class="search-group">
+            <input type="text" placeholder="Search events..." class="search-input">
+            <button class="search-button">Search</button>
+        </div>
+      </section>
+
+      <!-- Events Table -->
+      <section class="table-container centered">
+        <div class="table-wrapper">
+          <section class="event-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Event Name</th>
+        <th>Date</th>
+        <th>Location</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Event 1</td>
+        <td>2024-12-01</td>
+        <td>New York</td>
+        <td><span class="status active">Active</span></td>
+        <td class="action-cell">
+          <button class="action-button edit">Edit</button>
+          <button class="action-button details">Details</button>
+          <button class="action-button delete">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Event 2</td>
+        <td>2024-12-05</td>
+        <td>London</td>
+        <td><span class="status upcoming">Upcoming</span></td>
+        <td class="action-cell">
+          <button class="action-button edit">Edit</button>
+          <button class="action-button details">Details</button>
+          <button class="action-button delete">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Event 3</td>
+        <td>2024-11-20</td>
+        <td>Tokyo</td>
+        <td><span class="status past">Past</span></td>
+        <td class="action-cell">
+          <button class="action-button edit">Edit</button>
+          <button class="action-button details">Details</button>
+          <button class="action-button delete">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="pagination">
+    <button class="pagination-button" id="prevPage" disabled>&laquo; Prev</button>
+    <span class="pagination-info">Page 1 of 5</span>
+    <button class="pagination-button" id="nextPage">&raquo; Next</button>
+  </div>
+</section>
+
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer centered">
+    <p>© 2024 Event Management. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
